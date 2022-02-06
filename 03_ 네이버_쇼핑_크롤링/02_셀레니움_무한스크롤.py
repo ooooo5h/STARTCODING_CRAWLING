@@ -38,3 +38,15 @@ while True:
     if after_h == before_h:
         break
     before_h = after_h
+    
+# 상품 정보 div
+items = browser.find_elements_by_css_selector('.basicList_info_area__17Xyo')
+for item in items:
+    name = item.find_element_by_css_selector('.basicList_title__3P9Q7').text
+    try : 
+        price = item.find_element_by_css_selector('.price_num__2WUXn').text
+    except:
+        price = '판매중단'
+    link = item.find_element_by_css_selector('.basicList_title__3P9Q7 > a').get_attribute('href')
+    print(name, price, link)
+    
